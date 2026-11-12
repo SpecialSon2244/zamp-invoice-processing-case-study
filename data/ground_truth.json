@@ -1,0 +1,376 @@
+{
+  "note": "SYNTHETIC test set. Expected routes were decided by hand from the AP policy, before running the pipeline.",
+  "invoices": [
+    {
+      "file": "01_sri_lakshmi_happy_intrastate.pdf",
+      "edge_case": "Happy path: Karnataka vendor, CGST + SGST, clean 3-way match",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [],
+      "fields": {
+        "vendor_id": "V001",
+        "invoice_number": "SLP/26-27/0418",
+        "invoice_date": "2026-11-04",
+        "po_number": "KAV-PO-2026-1101",
+        "currency": "INR",
+        "net_amount": 25750.0,
+        "tax_amount": 4635.0,
+        "total_amount": 30385.0,
+        "supplier_tax_id": "29AAFCS7731K1ZU",
+        "bank_account": "50200041187723",
+        "line_count": 2
+      }
+    },
+    {
+      "file": "02_deccan_happy_interstate.pdf",
+      "edge_case": "Happy path: Maharashtra vendor, IGST, clean 3-way match",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [],
+      "fields": {
+        "vendor_id": "V002",
+        "invoice_number": "DEC/2026/1187",
+        "invoice_date": "2026-11-05",
+        "po_number": "KAV-PO-2026-1102",
+        "currency": "INR",
+        "net_amount": 148000.0,
+        "tax_amount": 26640.0,
+        "total_amount": 174640.0,
+        "supplier_tax_id": "27AABFD2290P1Z5",
+        "bank_account": "914020038812201",
+        "line_count": 2
+      }
+    },
+    {
+      "file": "03_rheinwerk_happy_de.pdf",
+      "edge_case": "Happy path: German vendor, 19% VAT, German number format",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [],
+      "fields": {
+        "vendor_id": "V101",
+        "invoice_number": "RW-2026-00731",
+        "invoice_date": "2026-11-03",
+        "po_number": "KAV-EU-PO-0412",
+        "currency": "EUR",
+        "net_amount": 2643.0,
+        "tax_amount": 502.17,
+        "total_amount": 3145.17,
+        "supplier_tax_id": "DE274915538",
+        "bank_account": "DE44370400440532013000",
+        "line_count": 2
+      }
+    },
+    {
+      "file": "04_deccan_split_po_final_part.pdf",
+      "edge_case": "Split PO: second invoice for the remaining 400 of 1000 units (600 already billed)",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [],
+      "fields": {
+        "vendor_id": "V002",
+        "invoice_number": "DEC/2026/1201",
+        "invoice_date": "2026-11-06",
+        "po_number": "KAV-PO-2026-1103",
+        "currency": "INR",
+        "net_amount": 38000.0,
+        "tax_amount": 6840.0,
+        "total_amount": 44840.0,
+        "supplier_tax_id": "27AABFD2290P1Z5",
+        "bank_account": "914020038812201",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "05_sri_lakshmi_split_po_overbilled.pdf",
+      "edge_case": "Split PO over-billing: 1500 of 2000 already billed, this invoice bills 700 more",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "PO_QTY_EXCEEDED"
+      ],
+      "fields": {
+        "vendor_id": "V001",
+        "invoice_number": "SLP/26-27/0433",
+        "invoice_date": "2026-11-07",
+        "po_number": "KAV-PO-2026-1104",
+        "currency": "INR",
+        "net_amount": 12600.0,
+        "tax_amount": 2268.0,
+        "total_amount": 14868.0,
+        "supplier_tax_id": "29AAFCS7731K1ZU",
+        "bank_account": "50200041187723",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "06_nimbus_exact_duplicate.pdf",
+      "edge_case": "Exact duplicate: same vendor and invoice number already paid",
+      "expected_route": "REJECT",
+      "expected_reasons": [
+        "DUPLICATE_EXACT"
+      ],
+      "fields": {
+        "vendor_id": "V003",
+        "invoice_number": "NCS/INV/2026/0088",
+        "invoice_date": "2026-10-01",
+        "po_number": "KAV-PO-2026-1106",
+        "currency": "INR",
+        "net_amount": 38500.0,
+        "tax_amount": 6930.0,
+        "total_amount": 45430.0,
+        "supplier_tax_id": "36AAKFN5521Q1ZP",
+        "bank_account": "0391102000017745",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "07_malnad_near_duplicate_reissued.pdf",
+      "edge_case": "Near-duplicate: vendor re-issued October under a new number (MFS-1042 already approved)",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "DUPLICATE_SUSPECTED"
+      ],
+      "fields": {
+        "vendor_id": "V005",
+        "invoice_number": "MFS-1043",
+        "invoice_date": "2026-11-03",
+        "po_number": "KAV-PO-2026-1108",
+        "currency": "INR",
+        "net_amount": 40000.0,
+        "tax_amount": 7200.0,
+        "total_amount": 47200.0,
+        "supplier_tax_id": "29AAGFM3384L1ZQ",
+        "bank_account": "38291045562",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "08_malnad_wrong_tax_regime.pdf",
+      "edge_case": "Karnataka vendor billing a Karnataka buyer with IGST instead of CGST + SGST",
+      "expected_route": "REJECT",
+      "expected_reasons": [
+        "GST_REGIME_MISMATCH"
+      ],
+      "fields": {
+        "vendor_id": "V005",
+        "invoice_number": "MFS-1051",
+        "invoice_date": "2026-11-05",
+        "po_number": "KAV-PO-2026-1110",
+        "currency": "INR",
+        "net_amount": 12500.0,
+        "tax_amount": 2250.0,
+        "total_amount": 14750.0,
+        "supplier_tax_id": "29AAGFM3384L1ZQ",
+        "bank_account": "38291045562",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "09_coastal_invalid_gstin.pdf",
+      "edge_case": "Supplier GSTIN typo: fails the checksum, so input tax credit cannot be claimed",
+      "expected_route": "REJECT",
+      "expected_reasons": [
+        "GSTIN_INVALID"
+      ],
+      "fields": {
+        "vendor_id": "V004",
+        "invoice_number": "CFM/2026/552",
+        "invoice_date": "2026-11-07",
+        "po_number": "KAV-PO-2026-1107",
+        "currency": "INR",
+        "net_amount": 43000.0,
+        "tax_amount": 2150.0,
+        "total_amount": 45150.0,
+        "supplier_tax_id": "33AAJFC6612R1ZA",
+        "bank_account": "6012345678",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "10_coastal_bank_details_changed.pdf",
+      "edge_case": "Bank account on invoice differs from vendor master (classic payment fraud pattern)",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "BANK_MISMATCH"
+      ],
+      "fields": {
+        "vendor_id": "V004",
+        "invoice_number": "CFM/2026/561",
+        "invoice_date": "2026-11-08",
+        "po_number": "KAV-PO-2026-1107",
+        "currency": "INR",
+        "net_amount": 64500.0,
+        "tax_amount": 3225.0,
+        "total_amount": 67725.0,
+        "supplier_tax_id": "33AAJFC6612R1Z3",
+        "bank_account": "77120055410983",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "11_deccan_short_receipt.pdf",
+      "edge_case": "3-way mismatch: invoiced 300 trays, warehouse received 270",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "GRN_SHORT"
+      ],
+      "fields": {
+        "vendor_id": "V002",
+        "invoice_number": "DEC/2026/1209",
+        "invoice_date": "2026-11-07",
+        "po_number": "KAV-PO-2026-1105",
+        "currency": "INR",
+        "net_amount": 192000.0,
+        "tax_amount": 34560.0,
+        "total_amount": 226560.0,
+        "supplier_tax_id": "27AABFD2290P1Z5",
+        "bank_account": "914020038812201",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "12_rheinwerk_price_variance.pdf",
+      "edge_case": "Unit price 8% above PO price (tolerance is 2%)",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "PRICE_VARIANCE"
+      ],
+      "fields": {
+        "vendor_id": "V101",
+        "invoice_number": "RW-2026-00755",
+        "invoice_date": "2026-11-06",
+        "po_number": "KAV-EU-PO-0418",
+        "currency": "EUR",
+        "net_amount": 1458.0,
+        "tax_amount": 277.02,
+        "total_amount": 1735.02,
+        "supplier_tax_id": "DE274915538",
+        "bank_account": "DE44370400440532013000",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "13_nimbus_no_po_inferred.pdf",
+      "edge_case": "No PO number printed: process infers the only open PO that fits; TDS 194J noted",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [
+        "PO_INFERRED",
+        "TDS"
+      ],
+      "fields": {
+        "vendor_id": "V003",
+        "invoice_number": "NCS/INV/2026/0112",
+        "invoice_date": "2026-11-01",
+        "po_number": null,
+        "currency": "INR",
+        "net_amount": 38500.0,
+        "tax_amount": 6930.0,
+        "total_amount": 45430.0,
+        "supplier_tax_id": "36AAKFN5521Q1ZP",
+        "bank_account": "0391102000017745",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "14_malnad_scanned_image_only.pdf",
+      "edge_case": "Scanned image, no text layer: OCR reads it; amounts must reconcile before auto-approval",
+      "expected_route": "AUTO_APPROVE",
+      "expected_reasons": [
+        "OCR"
+      ],
+      "fields": {
+        "vendor_id": "V005",
+        "invoice_number": "MFS-1058",
+        "invoice_date": "2026-11-10",
+        "po_number": "KAV-PO-2026-1110",
+        "currency": "INR",
+        "net_amount": 12500.0,
+        "tax_amount": 2250.0,
+        "total_amount": 14750.0,
+        "supplier_tax_id": "29AAGFM3384L1ZQ",
+        "bank_account": "38291045562",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "15_malnad_messy_no_invoice_number.pdf",
+      "edge_case": "Messy bill: no invoice number, bundled lump-sum line, different labels",
+      "expected_route": "REJECT",
+      "expected_reasons": [
+        "MISSING_INVOICE_NUMBER"
+      ],
+      "fields": {
+        "vendor_id": "V005",
+        "invoice_number": null,
+        "invoice_date": "2026-11-09",
+        "po_number": "KAV-PO-2026-1108",
+        "currency": "INR",
+        "net_amount": 40000.0,
+        "tax_amount": 7200.0,
+        "total_amount": 47200.0,
+        "supplier_tax_id": "29AAGFM3384L1ZQ",
+        "bank_account": "38291045562",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "16_vandijk_vat_instead_of_reverse_charge.pdf",
+      "edge_case": "Dutch vendor charged 21% NL VAT on a B2B sale to Germany; should be reverse charge",
+      "expected_route": "REJECT",
+      "expected_reasons": [
+        "EU_REVERSE_CHARGE"
+      ],
+      "fields": {
+        "vendor_id": "V102",
+        "invoice_number": "VDP-26-1187",
+        "invoice_date": "2026-11-06",
+        "po_number": "KAV-EU-PO-0420",
+        "currency": "EUR",
+        "net_amount": 2600.0,
+        "tax_amount": 546.0,
+        "total_amount": 3146.0,
+        "supplier_tax_id": "NL853112907B01",
+        "bank_account": "NL91ABNA0417164300",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "17_unknown_vendor.pdf",
+      "edge_case": "Vendor not in vendor master (no onboarding, no PO)",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "UNKNOWN_VENDOR"
+      ],
+      "fields": {
+        "vendor_id": null,
+        "invoice_number": "QFT-2026-77",
+        "invoice_date": "2026-11-09",
+        "po_number": null,
+        "currency": "INR",
+        "net_amount": 65000.0,
+        "tax_amount": 11700.0,
+        "total_amount": 76700.0,
+        "supplier_tax_id": "29AAQFQ1209D1Z9",
+        "bank_account": "1100223344",
+        "line_count": 1
+      }
+    },
+    {
+      "file": "18_deccan_over_approval_limit.pdf",
+      "edge_case": "Everything matches, but INR 7.08 lakh is above the INR 5 lakh auto-approval limit",
+      "expected_route": "NEEDS_REVIEW",
+      "expected_reasons": [
+        "OVER_APPROVAL_LIMIT"
+      ],
+      "fields": {
+        "vendor_id": "V002",
+        "invoice_number": "DEC/2026/1215",
+        "invoice_date": "2026-11-09",
+        "po_number": "KAV-PO-2026-1109",
+        "currency": "INR",
+        "net_amount": 600000.0,
+        "tax_amount": 108000.0,
+        "total_amount": 708000.0,
+        "supplier_tax_id": "27AABFD2290P1Z5",
+        "bank_account": "914020038812201",
+        "line_count": 1
+      }
+    }
+  ]
+}

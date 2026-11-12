@@ -1,0 +1,17 @@
+po_number,vendor_id,buyer_entity,line_no,item_code,description,qty,unit_price,currency,status
+KAV-PO-2026-1101,V001,IN,1,PK-5PLY-450,Corrugated box 5-ply 450x350x300,500,42.0,INR,open
+KAV-PO-2026-1101,V001,IN,2,PK-FOAM-IN,EPE foam insert set,500,9.5,INR,open
+KAV-PO-2026-1102,V002,IN,1,EL-MCB-32A,MCB 32A double pole,200,310.0,INR,open
+KAV-PO-2026-1102,V002,IN,2,EL-CU-2.5,Copper wire 2.5 sq mm (90 m coil),40,2150.0,INR,open
+KAV-PO-2026-1103,V002,IN,1,EL-LED-DRV,LED driver 36W constant current,1000,95.0,INR,open
+KAV-PO-2026-1104,V001,IN,1,PK-CTN-STD,Shipper carton standard,2000,18.0,INR,open
+KAV-PO-2026-1105,V002,IN,1,EL-TRAY-300,Perforated cable tray 300 mm,300,640.0,INR,open
+KAV-PO-2026-1106,V003,IN,1,SV-CLOUD-M,Managed cloud hosting - monthly,12,38500.0,INR,open
+KAV-PO-2026-1107,V004,IN,1,LG-FTL-BLR-CHN,Full truck load Bengaluru to Chennai,6,21500.0,INR,open
+KAV-PO-2026-1108,V005,IN,1,SV-HK-MONTH,Housekeeping services - monthly,12,40000.0,INR,open
+KAV-PO-2026-1109,V002,IN,1,EL-PANEL-LT,LT distribution panel 400A,4,150000.0,INR,open
+KAV-PO-2026-1110,V005,IN,1,SV-PEST-Q,Pest control - quarterly,4,12500.0,INR,open
+KAV-EU-PO-0412,V101,DE,1,RW-BRG-6205,Deep groove ball bearing 6205-2RS,120,18.4,EUR,open
+KAV-EU-PO-0412,V101,DE,2,RW-SEAL-KIT,Shaft seal kit,60,7.25,EUR,open
+KAV-EU-PO-0418,V101,DE,1,RW-GBX-40,Worm gearbox ratio 40:1,30,45.0,EUR,open
+KAV-EU-PO-0420,V102,DE,1,VD-SHAFT-20,Precision ground shaft 20 mm,80,32.5,EUR,open

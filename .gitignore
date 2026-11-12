@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+outputs/
+data/uploads/
+*.pyc
+.env
+
+# Zamp's brief and private notes, kept local only
+brief.pdf
+email_draft.txt
+INTERVIEW_PREP.md
+INTERVIEW_PREP.pdf
+scripts/make_pdfs.py

@@ -1,0 +1,8 @@
+vendor_id,name,country,state_code,city,tax_id,pan,bank_account,bank_code,currency,tds_section,tds_rate,status
+V001,Sri Lakshmi Packaging Pvt Ltd,IN,29,"Peenya, Bengaluru",29AAFCS7731K1ZU,AAFCS7731K,50200041187723,HDFC0001234,INR,,0,active
+V002,Deccan Electricals & Components,IN,27,"Bhosari, Pune",27AABFD2290P1Z5,AABFD2290P,914020038812201,UTIB0000412,INR,,0,active
+V003,Nimbus Cloud Services LLP,IN,36,"Madhapur, Hyderabad",36AAKFN5521Q1ZP,AAKFN5521Q,0391102000017745,ICIC0000391,INR,194J,2.0,active
+V004,Coastal Freight Movers,IN,33,"Ambattur, Chennai",33AAJFC6612R1Z3,AAJFC6612R,6012345678,IDIB000A012,INR,194C,2.0,active
+V005,Malnad Facility Services,IN,29,"Hebbal, Mysuru",29AAGFM3384L1ZQ,AAGFM3384L,38291045562,SBIN0040213,INR,194C,2.0,active
+V101,Rheinwerk Industrietechnik GmbH,DE,,50667 Koeln,DE274915538,,DE44370400440532013000,COBADEFFXXX,EUR,,0,active
+V102,Van Dijk Precision B.V.,NL,,5611 Eindhoven,NL853112907B01,,NL91ABNA0417164300,ABNANL2A,EUR,,0,active
