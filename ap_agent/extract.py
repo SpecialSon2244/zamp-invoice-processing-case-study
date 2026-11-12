@@ -72,12 +72,15 @@ def _ocr_page(page) -> tuple[str, float, dict]:
     global _ocr_engine
     import numpy as np
     if _ocr_engine is None:
-        from rapidocr_onnxruntime import RapidOCR
+        import logging
+        from rapidocr import RapidOCR
+        logging.getLogger("RapidOCR").setLevel(logging.ERROR)
         _ocr_engine = RapidOCR()
     img = page.render(scale=1.5).to_pil().convert("RGB")
-    result, _ = _ocr_engine(np.array(img))
-    if not result:
+    out = _ocr_engine(img)
+    if not getattr(out, "txts", None):
         return "", 0.0, {}
+    result = list(zip(out.boxes, out.txts, out.scores))
     boxes = sorted(((b[0][1], b[0][0], t, float(c)) for b, t, c in result), key=lambda r: (r[0], r[1]))
     rows, current, last_y = [], [], None
     for y, x, t, c in boxes:

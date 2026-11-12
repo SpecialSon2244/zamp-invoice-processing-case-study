@@ -1,6 +1,7 @@
 pdfplumber==0.11.10
 pypdfium2==5.15.2
-rapidocr-onnxruntime==1.4.4
+rapidocr==3.10.0
+onnxruntime==1.31.1
 reportlab==5.1.0
 pandas==3.1.1
 openpyxl==3.1.5

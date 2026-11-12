@@ -148,8 +148,8 @@ python -m pytest -q                  # 38 tests
 ```
 
 To host the UI on Streamlit Community Cloud, the main file is `app.py`. In Advanced settings
-pick Python 3.13 (the version I built on). No secrets are needed. `packages.txt` lists a few
-system libraries that OpenCV needs on that host.
+pick Python 3.13 (the version I built on). No secrets are needed. `packages.txt` lists a couple of
+system libraries that ONNX Runtime needs on that host.
 
 Optional LLM fallback: `export LLM_API_KEY=...` (any OpenAI-compatible endpoint, see
 `ap_agent/llm.py`), then `python run.py --llm` or switch it on in the UI sidebar.
