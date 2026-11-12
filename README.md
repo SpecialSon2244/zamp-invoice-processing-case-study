@@ -128,8 +128,8 @@ How I read these numbers:
   left it out" from "OCR missed it". The original report is kept in
   [docs/eval_first_stress_run.md](docs/eval_first_stress_run.md).
 
-The tests (`pytest`, 38 tests) cover each rule on its own, the full sample set end to end, the LLM
-fallback with a fake model, and a smoke test of every UI screen.
+The tests (`pytest`, 40 tests) cover each rule on its own, the full sample set end to end, the LLM
+fallback with a fake model, a smoke test of every UI screen, and a review approval that updates the dashboard.
 
 ## 5. How to run it
 
@@ -144,7 +144,7 @@ python run.py                        # process data/inbox end to end, prints eve
 python run.py data/inbox/10_coastal_bank_details_changed.pdf   # one invoice
 streamlit run app.py                 # UI: live run, review queue, dashboard
 python eval.py --scanned             # accuracy report -> outputs/eval_report.md
-python -m pytest -q                  # 38 tests
+python -m pytest -q                  # 40 tests
 ```
 
 To host the UI on Streamlit Community Cloud, the main file is `app.py`. In Advanced settings
